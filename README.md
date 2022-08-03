@@ -6,6 +6,6 @@ If you have any suggestions and/or comments, please feel free to email me at [jh
 
 ## Description
 
-1. Most files contain only code that I have personally written, though there are some exceptions where my code is interlaced with code provided beforehand. Some noteable examples of "interlaced" files (NOTE: the vast majority of these examples are in lower level courses and labs):
+1. Most files contain only code that I have personally written, though there are some exceptions where my code is interlaced with code provided beforehand. Some noteable examples of "interlaced" files (NOTE: the vast majority of these examples occur in lower level courses and labs):
     - makefiles
-    - C/C++ headers1
+    - C/C++ headers
