@@ -7,4 +7,4 @@ If you have any suggestions and/or comments, please feel free to email me at [jh
 ## Description
 
 1. Most files contain only code that I have personally written, though there are some exceptions where my code is interlaced with boilerplate code provided to me beforehand. Some noteable exceptions:
-- Some *makefiles* are partially written by myself, while ones in later classes were completely written by me.
+    - Some *makefiles* are partially written by myself, while ones in later classes were completely written by me.
