@@ -15,7 +15,7 @@ If you have any suggestions and/or comments, please feel free to email me at [jh
     - code written by myself
     - use of a software tool downloaded from a git repository 
 
-3. For project/assignment description:
+3. For project/assignment descriptions:
     - Many CPP files provide summary information at the top explaining the purpose of the lab.
     - Some projects have a pdf or other document explaining the assignment
     - Some projects have a README.md which I created if documentation was lacking.
