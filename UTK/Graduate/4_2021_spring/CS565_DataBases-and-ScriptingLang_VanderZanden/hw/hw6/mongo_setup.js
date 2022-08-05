@@ -1,0 +1,90 @@
+db.students.drop();
+db.students.insertMany( [
+    { lastname: "mouse", firstname: "mickey",
+      dateOfBirth: new Date("2000-05-15"), email: "mickey@disney.com",
+      grade: "B+",
+      major: "CS",
+      quizzes : [85, 76, 91, 100, 64, 91],
+      report : { score: 78, ta: "Jeff Hardy", comments: "too many mice" },
+      exams : [ { score: 92, ta: "Nancy Hew", comments: "nice code!" },
+		{ score: 87, ta: "Jeff Hardy", comments: "nice style" },
+		{ score: 91, ta: "Nancy Hew" } ]
+    },
+   { lastname: "vander zanden", firstname: "smiley",
+     dateOfBirth: new Date("2005-11-15"), email: "smiley@utk.edu",
+     grade: "A",
+     major: "MATH",
+     quizzes: [93, 100, 100, 95, 83, 100],
+     report : { score: 95, ta: "Nancy Hew", comments: "great dog stories" },
+     exams : [ { score: 98, ta: "Jeff Hardy", comments: "fantastic" },
+	       { score: 93, ta: "Clark Richards", comments: "excellent!" },
+	       { score: 100, ta: "Clark Richards", comments: "Whoa!" }
+	     ]
+   },
+    { lastname: "sublime", email: "sublime@utk.edu",
+      dateOfBirth: new Date("2000-01-18"),
+      grade: "C",
+      major: "CS",
+      quizzes: [ 45, 58, 73, 82, 63, 61, 0, 71 ],
+      report : { score: 69, ta: "Jeff Hardy", comments: "unreadable" },
+      exams : [ { score: 56, ta: "Clark Richards" },
+		{ score: 74, ta: "Clark Richards" }
+	      ]
+    },
+    { lastname: "ape", firstname: "great", email: "gape@warner.com",
+      dateOfBirth: new Date("2000-01-18"),
+      grade: "B",
+      major: "CPE",
+      quizzes: [ 54, 85, 37, 85, 93, 99, 100 ],
+      report : { score: 81, ta: "Clark Richards", comments: "a bit too sentimental" },
+      exams : [ { score: 83, ta: "Nancy Hew" },
+		{ score: 91, ta: "Jeff Hardy" },
+		{ score: 95, ta: "Jeff Hardy" },
+		{ score: 78, ta: "Clark Richards" }
+	      ]
+    },
+   { lastname: "mouse", firstname: "minnie",
+     dateOfBirth: new Date("2001-09-13"), email: "mmouse@disney.com",
+     grade: "A",
+     major: "MATH",
+     quizzes: [100, 94, 98, 35, 97, 100, 100 ],
+     report : { score: 98, ta: "Nancy Hew", comments: "great mouse stories" },
+     exams : [ { score: 83, ta: "Jeff Hardy", comments: "problem 1 was tough" },
+	       { score: 97, ta: "Clark Richards", comments: "excellent!" },
+	       { score: 90, ta: "Jeff Hardy", comments: "Whoa!" },
+	       { score: 104, ta: "Jeff Hardy", comments: "Getting even better!" }
+	     ]
+   },
+   { lastname: "bagel", firstname: "matty",
+     dateOfBirth: new Date("2001-07-31"), email: "mbagel@utk.edu",
+     grade: "F",
+     major: "CS",
+     quizzes: [0, 0, 10, 0, 50, 30, 0],
+     report : { score: 0 },
+     exams : [ { score: 38, ta: "Jeff Hardy", comments: "come see me" },
+	       { score: 45, ta: "Clark Richards", comments: "unorganized" },
+	       { score: 55, ta: "Nancy Hew", comments: "hmm..." },
+	     ]
+   },
+   { lastname: "apple", firstname: "henry",
+     dateOfBirth: new Date("1999-05-06"), email: "happle33@utk.edu",
+     grade: "F",
+     major: "CS",
+     quizzes: [30, 60, 10, 40],
+     report : { score: 65, ta: "Nancy Hew", comments: "improve your writing" },
+     exams : [ { score: 84, ta: "Jeff Hardy", comments: "problem 2 and 3" },
+	       { score: 33, ta: "Jeff Hardy", comments: "come see me" }
+	     ]
+   },
+   { lastname: "orange", firstname: "sally",
+     dateOfBirth: new Date("1999-05-06"), email: "sallyo@utk.edu",
+     grade: "B",
+     major: "MATH",
+     quizzes: [85, 93, 95, 73, 84, 91, 100],
+     report : { score: 92, ta: "Nancy Hew", comments: "a bit fruity" },
+     exams : [ { score: 84, ta: "Clark Richards", comments: "problem 2" },
+	       { score: 69, ta: "Clark Richards", comments: "problem 3" },
+	       { score: 91, ta: "Clark Richards", comments: "problem 1" },
+	     ]
+   }
+]);

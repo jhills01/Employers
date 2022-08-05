@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UTK ABET - Results, Assessment, Narrative</title>
+        <link rel="stylesheet" href="abet.css" />
+    </head>
+
+    <body>
+        <!--header-------------------------------------------------------------------------------->        
+        <div class="header" id="header">
+            
+            <div id="subHeader1">UTK ABET</div>
+            
+            <div id="subHeader2">
+                <button id="subH2_DropDownBtn">
+                  <!-- <i id="fa fa-caret-down"></i> -->
+                  <img id="icon_personFill" class="headerIcon" src="icons/person-fill.svg">
+                  <img id="icon_caretDownFill" class="headerIcon" src="icons/caret-down-fill.svg">
+                  <div id="subH2_DropDownBtn_Content">
+                    <a href="#">Change Password</a>
+                    <a href="#">Logout</a>
+                  </div>  
+                </button>
+            </div>            
+
+        </div>
+
+        <!--nav-------------------------------------------------------------------------------->
+        <div class="nav" id="nav">
+            <div id="nav_Section">Section:</div>
+            <select id="nav_DropDown">
+                <option>Test Option Long Text 1</option>
+                <option>Test Option 2</option>
+                <option>Test Option 3</option>
+            </select>
+            <div id="nav_Outcomes">
+                <a href="#">Test Outcome 1</a> 
+                <a href="#">Test Outcome 2</a> 
+                <a href="#">Test Outcome 3</a> 
+            </div>
+        </div>
+
+        <!--results-------------------------------------------------------------------------------->
+        <div class="results" id="results">
+            <div id="resultsRow1">Results</div>         
+            <div id="resultsRow2">
+                Please enter the number of students who do not expectations, meet expectations, 
+                and exceed expectations. You can type directly into the boxes --
+                you do not need to use the arrows. 
+            </div>
+            <div id="resultsRow3">
+                <b>Test Outcome 2 - CS:</b> Design, implement, and evaluate a computing-based solution
+                to meet a given set of computing requirements in the context of the program's discipline.
+            </div>
+            
+            <div id="resultsRow4-1">Not Meets Expectations</div>
+            <div id="resultsRow4-2">Meets Expectations</div>
+            <div id="resultsRow4-3">Exceeds Expectations</div>
+            <div id="resultsRow4-4">Total</div>
+            
+            <form id="resultsRow5" action="">
+                <input id="resultsRow5-1" type="number" min=0>
+                <input id="resultsRow5-2" type="number" min=0>
+                <input id="resultsRow5-3" type="number" min=0>
+                <input type="text" id="resultsRow5-4" value="180" readonly>
+
+                <div id="resultsRow6">
+                    <button id="resultsRow6-1" type="submit">Save Results</button>
+                </div>
+            </form>
+        </div>
+
+        <!--assessPlan-------------------------------------------------------------------------------->
+        <div class="assessPlan" id="assessPlan">
+            <div id="assRow1">Assessment Plan</div>
+            <div id="assRow2">
+                <!-- ordered list are numbered by default -->
+                <ol>
+                    <li>
+                        Please enter your assessment plan for each outcome. The weights are percentages from
+                        0-100 and the weights should add up to 100%.                    
+                    </li>
+                    <li>
+                        Always press "Save Assessment" when finished, even if you removed an assessment. The
+                        trash can only removes an assessment from this screen - it does not remove it from the
+                        database until you press "Save Assessments".
+                    </li>
+                </ol>
+            </div>
+
+            <div id="assRow3">
+                <div id="assRow3-1">Weight (%)</div>
+                <div id="assRow3-2">Description</div>
+                <div id="assRow3-3">Remove</div>
+            </div>
+            <!--NOTE: I commented out FORM tag b/c I'm not sure it's needed. 
+                However, the good news:
+                    1) Changing DIV to FORM with dame ID doesn't mess up layout!!!!! 
+                    2) And most likely, I can wrap FORM around anything and it will work seemlessly...
+                       ...as long as I keep the same IDs for other elements
+                
+                UPDATE: 2) is NOT true if I stick FORM on outside like with id=form1 below-->
+            <form id="assRow4" action="">
+                <div class="assessmentRow">    
+                    <input class="assessmentRow-1" type="number" min=1 max=100>
+                    <textarea class="assessmentRow-2" rows="4" maxlength="400"></textarea>
+                    <div class="assessmentRow-3">
+                        <button class="assessmentRow4-3_Btn" type="button">
+                            <!-- Made this icon a class b/c there is more than one -->
+                            <img class="icon_trash" src="icons/trash.svg">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="assessmentRow">    
+                        <input class="assessmentRow-1" type="number" min=1 max=100>
+                        <textarea class="assessmentRow-2" rows="4" maxlength="400"></textarea>
+                        <div class="assessmentRow-3">
+                            <button class="assessmentRow4-3_Btn" type="button">
+                                <!-- Made this icon a class b/c there is more than one -->
+                                <img class="icon_trash" src="icons/trash.svg">
+                            </button>
+                        </div>
+                </div>    
+
+                <div class="assessmentRow">    
+                    <input class="assessmentRow-1" type="number" min=1 max=100>
+                    <textarea class="assessmentRow-2" rows="4" maxlength="400"></textarea>
+                    <div class="assessmentRow-3">
+                        <button class="assessmentRow4-3_Btn" type="button">
+                            <!-- Made this icon a class b/c there is more than one -->
+                            <img class="icon_trash" src="icons/trash.svg">
+                        </button>
+                    </div>
+                </div>    
+
+                <div id="assRow5">
+                    <button id="assRow5_btn" type="button">+ New</button>
+                </div>
+
+                <div id="assRow6">
+                    <button id="assRow6_btn" type="submit">Save Assessments</button>
+                </div>
+            </form>
+        </div>
+
+        <!--narrativeSum-------------------------------------------------------------------------------->
+        <div class="narrativeSum" id="narrativeSum">
+            <div id="narraRow1">Narrative Summary</div>
+            
+            <div id="narraRow2">
+                Please enter your narrative for each outcome, including the student strengths for 
+                the outcomes, student weaknesses for the outcomes, and suggested actions for 
+                improving student attainment of each outcome.
+            </div>
+
+            <form id="narraRow3" action="">
+                <div id="narraRow3-1">
+                    <label for="narraRow3_textArea">Strengths</label> <br>
+                    <textarea id="narraRow3_textArea" name="narraRow3_textArea" placeholder="None" rows="4" maxlength="2000"></textarea>
+                </div>
+
+                <div id="narraRow3-2">
+                    <label for="narraRow4_textArea">Weaknesses</label> <br>
+                    <textarea id="narraRow4_textArea" name="narraRow4_textArea" placeholder="None" rows="4" maxlength="2000"></textarea>
+                </div>  
+                
+                <div id="narraRow3-3">
+                    <label for="narraRow5_textArea">Actions</label> <br>
+                    <textarea id="narraRow5_textArea" name="narraRow5_textArea" placeholder="None" rows="4" maxlength="2000"></textarea>
+                </div>    
+
+                <div id="narraRow3-4">
+                    <button id="narraRow6_btn" type="submit">Save Narrative</button>
+                </div>
+            </form>
+        </div>
+
+        <!--footer------------------------------------------------------------------------------
+            NOTE: I'm probably not going to need this...but just in case....-->
+        <div class="footer" id="footer">
+
+        </div>
+    </body>
+</html>

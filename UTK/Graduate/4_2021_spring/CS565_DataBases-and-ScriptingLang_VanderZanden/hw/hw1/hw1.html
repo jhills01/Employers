@@ -1,0 +1,195 @@
+<center>
+<h2> Homework 1 </h2>
+</center>
+
+<hr>
+<h2> General Instructions </h2>
+<p>
+<ol>
+<li> When submitting your homework, please follow the following conventions 
+	as the homework will be graded using automatic grading scripts:
+    <p>
+    <ul>
+    <li> Each query exercise in the homework should be in a separate .sql file. 
+    <li> The name of the sql files should be the number of the question. For 
+	 example, for this homework, 6.8, 6.10, 6.12, ... would be named as 
+	 1.sql, 2.sql, 3.sql, ... respectively. 
+    <li> Submit one single Zip file to Canvas. You can zip all the files
+	 in a directory using this command on the Hydra machines:
+<pre>
+zip -r netid.zip *.*
+</pre>
+    The name of the zip file should be your netid. For example, if your netid is smith1, you would run:
+<pre>
+zip -r smith1.zip *.*
+</pre>
+</ol>
+<p>
+<hr>
+<ol>
+<li> This assignment uses the following relations for a Hotel reservation
+     system:
+<pre>
+Hotel (<u>hotelNo</u>, hotelName, city)
+Room (<u>roomNo</u>, <u>hotelNo</u>, type, price)
+Booking (<u>hotel No.</u> <u>guestNo</u>, <u>dateFrom</u>, date To, room No)
+Guest (<u>guestNo</u>, guestName, guestAddress)
+</pre>
+where 
+<ul>
+<li> Hotel contains hotel details and hotelNo is the primary key;
+<li> Room contains room details for each hotel and (roomNo, hotelNo) forms the primary key;
+<li> Booking contains details of bookings and (hotelNo, guestNo, dateFrom) forms the primary key;
+<li> Guest contains guest details and guestNo is the primary key.
+</ul>
+Use the Hotel.sql file that is included with this homework assignment
+	to create the above hotel tables.
+	The Hotel.sql file also contains some sample data.
+        You can use these tables to test 
+	your queries in part 2 of this problem. 
+	<b>This data is incomplete and the dates must be updated to ones that
+	work around the time you complete the homework assignment</b>. The existing data will cause at least
+	one of your queries to return an empty result and other queries to
+	return a single tuple. For example, the current data only has one
+	hotel in London and one of the queries asks you to list all the hotels
+	in London. I strongly suggest that you add additional hotels that
+	are located in London so that your query returns multiple tuples. In
+	the past we have had problems with students thinking their queries
+	were correct because they ran them only against the sample data and
+	then being surprised to learn that their queries were written in a
+	way that would only return 1 tuple, no matter how many tuples actually
+	should have satisfied the query.
+<p>
+<li> The following exercises from the Ch6-HW.pdf file that you can find in
+	the Modules section on Canvas. With each exercise I have shown a sample query
+	result so that you know exactly which attributes we want you to print.
+	<b>If the query is date-sensitive, such as question 6, then your
+	answer may differ from my answer, and it may also differ if you have
+	added additional data to your relations.</b> What is important about
+	the sample output is how it is formatted and which attributes we want.
+  	<ol>
+	<li> 6.8 
+<pre>
++---------+-----------------+--------+
+| hotelNo | hotelName       | city   |
++---------+-----------------+--------+
+|       1 | Grosvenor Hotel | London |
++---------+-----------------+--------+
+</pre>
+	<li> 6.10: 
+<pre>
++--------+---------+--------+-------+
+| roomNo | hotelNo | type   | price |
++--------+---------+--------+-------+
+|    450 |       2 | double | 27.95 |
+|    250 |       2 | family | 32.50 |
+|    110 |       1 | double | 35.00 |
++--------+---------+--------+-------+
+</pre>
+	<li> 6.12: 
+<pre>
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+</pre>
+	<li> 6.14: The question means to say "the total revenue that could
+	be derived from double rooms if they were all booked for a single
+	night." Hence the question refers to the maximum revenue that could
+	be earned from double rooms for a single night.
+<pre>
++------------+
+| SUM(price) |
++------------+
+|     362.92 |
++------------+
+</pre>
+	<li> 6.16
+<pre>
++--------+-----------+
+| price  | type      |
++--------+-----------+
+|  89.99 | double    |
+| 109.99 | family    |
+| 135.50 | king      |
+| 899.99 | penthouse |
+|  35.00 | double    |
++--------+-----------+
+</pre>
+	<li> 6.19-The problem description means take the sum of all currently
+	occupied rooms in the Grosvenor Hotel (i.e, today means today's date). 
+ 	Here are a number of
+	clarifications for this problem:
+	<p>
+        <ul>
+	<li> If the booking starts 
+	on the day in question, then the
+	room is considered occupied. 
+	<li> The booking ends (i.e., the dateTo column)
+	on the day the guest checks out of the room.
+	The room is considered occupied if the guest spends the night in the
+	room. For example, if the guest checks in on Aug 8 and checks out
+	on Aug 12, then the room is occupied for 4 nights--Aug. 8, 9, 10, and 
+	11. The room is not considered occupied for Aug. 12, unless another
+	guest checks in on that date.
+	<li> Do not hard code the
+	Grosvenor Hotel's id into your query. It is unreasonable to expect
+	an end user, which is what you should assume you are, to know the id
+	of the Grosvenor Hotel. Use the name of the hotel in the query. 
+  	<li> Today means today's date. You can obtain today's date
+                in SQL using the CURRENT_DATE function. See
+                <a href="https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html">this link</a> for details.
+	</ul>
+<pre>
++------------+
+| SUM(price) |
++------------+
+|      89.99 |
++------------+
+</pre>
+	<li> 6.22: Name your computed column "count"
+<pre>
++---------+-------+
+| hotelNo | count |
++---------+-------+
+|       1 |     5 |
+|       2 |     7 |
++---------+-------+
+</pre>
+	<li> 6.23: Name your computed column "count"
+<pre>
++-----------------+-------+
+| hotelName       | count |
++-----------------+-------+
+| Grosvenor Hotel |     5 |
++-----------------+-------+
+</pre>
+	<li> 6.28
+<p>
+<b>Before the update</b>
+<pre>
++--------+---------+-----------+--------+
+| roomNo | hotelNo | type      | price  |
++--------+---------+-----------+--------+
+|    100 |       1 | double    |  89.99 |
+|    200 |       1 | family    | 109.99 |
+|    300 |       1 | king      | 135.50 |
+|    500 |       2 | king      | 205.00 |
+|    100 |       2 | penthouse | 249.99 |
++--------+---------+-----------+--------+
+</pre>
+<b>After the update</b>
+<pre>
++--------+---------+-----------+--------+
+| roomNo | hotelNo | type      | price  |
++--------+---------+-----------+--------+
+|    100 |       1 | double    |  94.49 |
+|    200 |       1 | family    | 115.49 |
+|    300 |       1 | king      | 142.28 |
+|    500 |       2 | king      | 215.25 |
+|    100 |       2 | penthouse | 262.49 |
++--------+---------+-----------+--------+
+</pre>
+	</ol>
+</ol>

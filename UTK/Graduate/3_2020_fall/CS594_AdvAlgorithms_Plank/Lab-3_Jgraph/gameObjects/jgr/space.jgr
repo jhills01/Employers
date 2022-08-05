@@ -1,0 +1,11 @@
+(* black chess pawn *)
+newgraph
+xaxis min 0 max 100 nodraw
+yaxis min 0 max 100 nodraw
+
+(* pawn base *)
+newline poly pfill 0 linethickness 10 pts
+  -90 -150 
+  -90 260 
+  190 260 
+  190 -150

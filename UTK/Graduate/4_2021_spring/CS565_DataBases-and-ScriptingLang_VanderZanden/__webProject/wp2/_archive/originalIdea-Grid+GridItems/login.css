@@ -1,0 +1,39 @@
+/*variables*/
+:root
+{
+    --loginLineSize: 50px;
+}
+
+#grid 
+{
+    width: auto;
+    display: grid;
+    background: lightgreen;
+    grid-template-rows: var(--loginLineSize) var(--loginLineSize) var(--loginLineSize) var(--loginLineSize);
+}
+
+/*styling common to all grid members-------------------*/
+.gridMember
+{
+    font-size: 30px;
+}
+
+/*styling unique to each grid member---------------------*/
+#header
+{
+    background-color: lightgrey;
+    border: 2px solid darkgrey;
+}
+
+#email 
+{
+}
+
+#password 
+{
+}
+
+#loginBtn
+{
+}
+

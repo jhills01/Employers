@@ -1,0 +1,39 @@
+Unit details that will be implementated into the game
+
+SNIPER
+-Movement:can only move one tile in any direction including diagonal
+-Attack: single target only
+-Health: 2500
+-Damage: 550
+-Range:  up to 7 tiles
+
+ARTILLERY
+-Movement: move 3 tiles only in adjacent direction but not backwards
+-Attack: splash damage in a 2x2 area adjacent above to its current position
+-Health: 6000
+-Damage: 250 to each tile in the 2x2 area
+-Range: 2 tiles from its current position
+
+INFANTRY
+-Movement: 1 tile forward only
+-Attack: Only diagonal tiles range of 1 (forward and backward)
+-Health: 3000
+-Damage: 1100
+-Range: 1 tile diagonal from its current position
+
+CAVALRY
+-Movement: 1 tile up or down
+-Attack: can damage any unit that is in the same row cavalry is in
+-Health: 4000
+-Damage: 200 to each unit in that row
+-Range: length of row
+
+HOPPER
+-Movement: move up to 10 tiles any adjacent direction 
+-Attack: any adjacent direction 1 tile away
+-Health: 1500
+-Damage: 425
+
+
+
+

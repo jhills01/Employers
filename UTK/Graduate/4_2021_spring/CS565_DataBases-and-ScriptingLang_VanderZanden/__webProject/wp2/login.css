@@ -1,0 +1,156 @@
+/*variables
+    1) I can use these to establish "standard" colors/sizes/etc and then use...
+       ... calc() to offset everything else from these standards
+*/
+
+:root 
+{
+    --fontSize: 20px;
+    --paddingLeftSize: 10px;
+    --gridGap: 15px;
+
+    --borderForm: 1.5px solid rgb(197, 197, 197);
+    --boxShadow: -1px -1px grey; 
+    --roundBorder: 10px;
+}
+
+body 
+{
+    /*grid properties*/
+    display: grid;
+    grid-template-rows: 40px 150px;
+    grid-template-areas: 
+        "header"
+        "form";
+    gap: var(--gridGap);
+
+    /*general*/
+    /* max-width: 800px; */
+    padding-top: 20px;
+}
+
+form 
+{
+    /*grid properties*/
+    grid-area: form;
+
+    display: grid;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-areas: 
+        "email"
+        "password"
+        "login";
+    gap: var(--gridGap);
+
+    /*general*/
+    width: 90%;
+}
+
+[id=header] 
+{
+    /*grid properties*/
+    grid-area: header;
+
+    /* flex properties*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /*general*/
+    width: 95%;
+    background: rgb(233, 233, 233);
+    
+    border: 1px solid rgb(197, 197, 197);
+
+    font-size: calc(var(--fontSize) + 5px);
+    font-weight: 900;
+
+}
+
+[id=email] 
+{
+    /*grid properties*/
+    grid-area: email;
+
+    /*general*/
+    font-size: var(--fontSize);
+    padding-left: var(--paddingLeftSize);
+    
+    border: var(--borderForm);
+    border-radius: var(--roundBorder);
+    box-shadow: var(--boxShadow);
+
+    outline: none;
+}
+
+[id=email]:focus
+{
+    box-shadow: 0 0 3px 2px green;
+}
+
+[id=password] 
+{
+    /*grid properties*/
+    grid-area: password;
+
+    /*general*/
+    font-size: var(--fontSize);
+    padding-left: var(--paddingLeftSize);
+
+    border: var(--borderForm);
+    border-radius: var(--roundBorder);
+    box-shadow: var(--boxShadow);
+
+    outline: none;
+}
+
+[id=password]:focus
+{
+    box-shadow: 0 0 3px 2px green;
+}
+
+[id=login] 
+{
+
+    /*grid properties*/
+    grid-area: login;
+
+    /*general*/
+    font-size: calc(var(--fontSize) - 5px);
+    color: white;
+    background-color: green;
+
+    border: 1px solid green;
+    border-radius: calc(var(--roundBorder) + 5px);
+
+    outline: none;
+
+    transition: all 0.5s;
+
+}
+
+[id=login]:hover
+{
+    transition: all 0.5s ease-out;
+
+    font-size: calc( var(--fontSize) + 5px );
+    background-color: blue;
+    cursor: pointer;
+}
+
+/* [id=login]:after
+{
+    transition: all 0.5s ease-out;
+
+    font-size: calc(var(--fontSize) - 5px);
+    background-color: green;
+} */
+
+[id=login]:active
+{
+    transition: all 0.001ms;
+
+    background-color: darkred;
+}
+
+

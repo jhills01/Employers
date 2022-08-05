@@ -1,0 +1,33 @@
+Repository:
+https://github.com/alambe22/CS302-Final-Project.git
+
+My executable is ./caseyChallenge8/test
+to compile make sure you compile Map.cpp, PerlinNoise.cpp, and test.cpp individually with g++ -c -std=c++11
+then link them together with g++ -o test test.o Map.o Perlinnoise.o
+It generates a map with perlin noise that is 25x25, then resizes it to 15x15
+
+
+Personal Rubric:
+
+20 points: Make a rough version of the header file for the map
+5 points: Define functions for getting and setting the time of day
+5 points: Define functions for getting and setting the weather
+10 points: create a rough version of terrain generation for the map
+
+
+Time Logs:
+03/25/2019
+-Worked on writing functions in lab for 2hrs and out of lab for 1hr
+	2:30pm to 4:30pm	2hrs
+	7:00pm to 8:00pm	1hr
+03/27/2019
+-Worked on understanding perlin noise
+	2:00am to 4:00am	2hrs
+03/28/2019
+-Worked on implementing perlin noise for terrain generation
+	1:30pm to 4:00pm	2.5hrs
+Total: 7.5hrs
+
+I spent a little longer than I hoped to on the terrain generation part of the code, and I still have some balancing to do to make it look better, but overall so far I have a lot done for the project and this challenge went really well.
+I completed everything in the rubric I made for myself for this challenge
+

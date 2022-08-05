@@ -1,0 +1,5 @@
+source website: https://github.com/Dvd848/CTFs/blob/master/2019_picoCTF/b00tl3gRSA2.md.
+
+Instructions:
+1) You don't have to create "c.bin" file to pass with "--uncipher" flag. Just pass the unalterd "c" number. 
+2) Also, when I created public key with "--createpub" flag, I got some output crap at the beginning of my "key.pub" file. Once I deleted it just leaving key info, everything worked. 

@@ -1,0 +1,932 @@
+:root 
+{
+    --fontFamily: arial;
+    --fontSize: 15px;
+    --border: 1px solid rgb(192, 192, 192);
+    --backgroundColor: rgb(233, 233, 233);
+    --boxShadow: -1px -1px rgb(216, 215, 215); 
+    --marginR-A-N: 25px;
+    --bottom: 5px;
+    --radius: 5px;
+    --btnBlue: rgb(43, 100, 153); 
+    --btnGreen: rgb(87, 186, 88); 
+    --hoverColor: rgb(200, 200, 200);  
+    --maxWidth: 1000px;
+}
+
+body
+{
+    height: 100%;
+    margin: 0px;
+
+    /* max-width: 1100px; */
+
+    /*grid properties*/
+    display: grid;    
+    /*
+    Deciding how to define template-row/columns was kind of difficult b/c I didn't know the units (i.e., fr, %, px, etc)...
+    ...and how they affect the behavior of the grid as items are added to each section.
+    KEY THINGS TO KNOW: auto == grid item expands to fit content dynamically; fr == free, or the "free space" within grid container;...
+                        ...% deals with all space in grid container, not just free space. 
+        line 1 vs line 2:
+        1) line 1 is commented out b/c auto for Assessment means free space in body is distributed to Results and Narrative.
+        2) line 2 is being used b/c using 1fr for Assessment makes that section absorb all free space in body leaving Results...
+           ...and Narrative untouched.
+    */
+    /* grid-template-rows: 30px auto auto auto;*/ /*line 1*/
+    grid-template-rows: 30px auto 1fr auto; /*line 2*/
+    /* grid-template-columns: 20% 80%; this is proportioned correctly according to his picture */
+    grid-template-columns: 250px 1fr; /*changed 20% to 250px b/c I wanted to fix the size of Nav*/
+    grid-template-areas: 
+        "header header"
+        "nav results"
+        "nav assessPlan"
+        "nav narrativeSum";
+}
+
+
+/* Universal Rules ================================================================================================================================= */
+textarea:focus, input[type=number]:focus
+{
+    box-shadow: 0 0 3px 2px rgb(87, 186, 88);
+}
+
+label
+{
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button
+{
+    opacity: 1; /*This makes spinners always visible*/
+}
+
+/* header compartment ================================================================================================================================= 
+   VIDEO TIME for drop-down: 8:23 */
+[id=header] 
+{
+    /* test code */
+    background-color: var(--backgroundColor);
+    border: var(--border);
+
+    /*grid properties*/
+    grid-area: header;
+
+    /* flex properties */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+
+    font-size: var(--fontSize);
+    font-family: Arial, sans-serif;
+}
+
+[id=subHeader1]
+{
+    flex: 0 1 50%;
+    font-weight: bold;
+    padding-left: 5px;
+    /* text-align: left; */
+}
+
+[id=subHeader2]
+{
+    flex: 0 1 50%;
+    text-align: right;
+    overflow: hidden;
+    padding-right: 5px;
+}
+
+[id=subH2_DropDownBtn]
+{
+    cursor: pointer;
+    background-color: var(--backgroundColor);
+    border: none;
+    outline: none;
+}
+
+[id=subH2_DropDownBtn_Content]
+{
+    display: none;
+    position: absolute; /*absolute makes this element's position relative to nearest ancester element - subH2_DropDownBtn*/
+    right: 10px; /*adds 10px to the right margin of element. This effectively shifts this element left relative to subH2_DropDownBtn*/
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+[id=subH2_DropDownBtn_Content] a
+{
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left; 
+    font-weight: bold;   
+}
+
+[id=subH2_DropDownBtn_Content] a:hover
+{
+    background-color: var(--hoverColor);
+}
+
+/* Displaying the dropdown content is handled in "changePassword.js" */
+/* [id=subH2_DropDownBtn]:focus div 
+{
+    display: block;
+} */
+
+[class=headerIcon]
+{
+    filter: invert(0.5) sepia(1) saturate(1) saturate(5) hue-rotate(180deg) brightness(60%);
+}
+
+/* nav compartment ================================================================================================================================= */
+[id=nav] 
+{
+    background-color: var(--backgroundColor);
+    border-right: var(--border);
+    border-left: var(--border);
+    border-bottom: var(--border);
+
+    /*grid properties*/
+    grid-area: nav;
+    display: grid;
+    grid-template-rows: 30px auto 1fr;
+    /* grid-template-columns: 100%; */
+    grid-template-areas: 
+        "navSec"
+        "navDropDown"
+        "navOutcomes";
+    gap: 10px;
+
+    padding-left: 5px;
+
+}
+
+[id=nav_Section]
+{
+    /*grid properties*/
+    grid-area: navSec;
+
+    display: flex;
+    flex-direction: row;
+    align-items: bottom;
+
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: bold;
+    padding-top: 20px; /*This pushes "Section" out of grid cell and closer to nav_DropDown THRU THE GAP!*/
+}
+
+[id=nav_DropDown]
+{
+    /*grid properties*/
+    grid-area: navDropDown;
+}
+
+[id=nav_DropDown] 
+{
+    /* color: green; */
+    border:var(--border);
+    margin-top: 5px;
+    margin-bottom: 5px; 
+    margin-right: 5px; 
+    padding: 3%;
+    border-radius: var(--radius);
+    box-shadow: var(--boxShadow);
+    outline: none;
+
+    font-size: calc(var(--fontSize) + 0px);
+}
+
+[id=nav_DropDown] option
+{
+    color: black;
+}
+
+[id=nav_Outcomes]
+{
+    /*grid properties*/
+    grid-area: navOutcomes;
+    display: grid;
+    grid-template-rows: auto;
+    align-content: start;
+
+    border-top: var(--border);
+}
+
+[id=nav_Outcomes] a
+{
+    font-family: var(--fontFamily);
+    font-size: calc(var(--fontSize) - 2px);
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+    /* border-top: var(--border); */
+
+    border-bottom: var(--border);
+
+    text-decoration: none; /*gets rid of underline*/
+}
+
+/* [id=nav_Outcomes] a:focus
+{
+    background-color: var(--hoverColor);
+}
+
+[id=nav_Outcomes] a:hover
+{
+    background-color: var(--hoverColor);
+} 
+*/
+
+/* results compartment ================================================================================================================================= */
+[id=results] 
+{   
+    max-width: calc(var(--maxWidth) + 50px); /*not sure why Results is off by 50px from AssessPlan/Narrative. Hmmm..*/
+    
+    /*grid properties*/
+    grid-area: results;
+    
+    display: grid;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 100px;
+    grid-template-areas: 
+    "resultsRow1 resultsRow1 resultsRow1 resultsRow1"
+    "resultsRow2 resultsRow2 resultsRow2 resultsRow2"
+    "resultsRow3 resultsRow3 resultsRow3 resultsRow3"
+    "resultsRow4-1 resultsRow4-2 resultsRow4-3 resultsRow4-4"
+    "resultsRow5 resultsRow5 resultsRow5 resultsRow5";
+    /* "resultsRow6 resultsRow6 resultsRow6 resultsRow6";  */
+    /* gap: 10px; */
+
+}
+
+[id=resultsRow1]
+{
+    /*grid properties*/
+    grid-area: resultsRow1;
+
+    font-weight: bold;
+    font-size: calc(var(--fontSize) + 12px);
+    font-family: var(--fontFamily);
+
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+    padding-top: 30px;
+    padding-bottom: 10px;
+
+    border-bottom: var(--border);
+    
+}
+
+[id=resultsRow2]
+{
+    grid-area: resultsRow2;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+[id=resultsRow3]
+{
+    grid-area: resultsRow3;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background-color: var(--backgroundColor);
+
+    border: var(--border);
+}
+
+[id=resultsRow4-1]
+{
+    grid-area: resultsRow4-1;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+
+    margin-left: var(--marginR-A-N);
+    padding-top: 20px;
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+
+}
+
+[id=resultsRow4-2]
+{
+    grid-area: resultsRow4-2;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+
+    padding-top: 20px;
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+
+}
+
+[id=resultsRow4-3]
+{
+    grid-area: resultsRow4-3;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+
+    padding-top: 20px;
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+
+}
+
+[id=resultsRow4-4]
+{
+    grid-area: resultsRow4-4;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+    
+    margin-right: var(--marginR-A-N);
+    padding-top: 20px;
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+
+}
+
+[id=resultsRow5]
+{
+    grid-area: resultsRow5;
+
+    display: grid;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 100px;
+    grid-template-areas: 
+    "resultsRow5-1 resultsRow5-2 resultsRow5-3 resultsRow5-4"
+    "resultErr resultErr resultErr resultErr"
+    "resultsRow6 resultsRow6 resultsRow6 resultsRow6"; 
+    /* "resultsRow6 resultsRow6 resultsRow6 resultsRow6";  */
+}
+
+[id=resultErr]
+{
+    grid-area: resultErr;
+
+    padding-left: 25px;
+}
+
+[id=resultsRow5-1]
+{
+    grid-area: resultsRow5-1;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    border: var(--border);
+    border-radius: var(--radius);
+    outline: none;
+
+    max-width: 200px;
+}
+
+[id=resultsRow5-2]
+{
+    grid-area: resultsRow5-2;
+    
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-right: var(--marginR-A-N);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    border: var(--border);
+    border-radius: var(--radius);
+    outline: none;
+
+    max-width: 200px;
+}
+
+[id=resultsRow5-3]
+{
+    grid-area: resultsRow5-3;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-right: var(--marginR-A-N);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    border: var(--border);
+    border-radius: var(--radius);
+    outline: none;
+
+    max-width: 200px;
+}
+
+[id=resultsRow5-4]
+{
+    grid-area: resultsRow5-4;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-right: var(--marginR-A-N);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+
+    border: none;
+    outline: none;
+
+    text-align: end;
+}
+
+[id=resultsRow6]
+{
+    grid-area: resultsRow6;
+    display: flex;
+    flex-flow: row-reverse;
+
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+    border-bottom: var(--border);
+    padding-bottom: 10px;
+}
+
+[id=resultsRow6] button
+{
+    flex: 0 1 15%;
+    
+    border-radius: var(--radius);
+    outline: none;
+
+    background-color: var(--btnBlue);
+    border-color: var(--btnBlue);
+    color: white;
+
+    height: 35px;
+    max-width: 100px;
+}
+
+[id=resultsRow6] button:active
+{
+    background-color: var(--btnGreen);
+    border-color: var(--btnGreen);
+    color: black;
+}
+
+/* assessPlan compartment ================================================================================================================================= */
+[id=storageOfOldCode] /*IMPORTANT NOTE: This is old code from old idea. Keeping it here for reference*/
+{
+    display: grid;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-columns: 150px 1fr 55px;
+    /*NOTE: I made a mistake here. I should have done must 6 rows and 1 col. 
+            If I need grids within row, make row item another grid container*/
+    /* grid-template-areas: 
+    "assRow1 assRow1 assRow1"
+    "assRow2 assRow2 assRow2"
+    "assRow3-1 assRow3-2 assRow3-3"
+    "assRow4 assRow4 assRow4"
+    "assRow5 assRow5 assRow5"
+    "assRow6 assRow6 assRow6";  */
+
+}
+
+[id=assessPlan] 
+{
+    max-width: var(--maxWidth);
+
+    /*grid properties*/    
+    grid-area: assessPlan;
+
+    grid-auto-rows: auto;
+    grid-auto-columns: 150px 1fr 55px;
+    
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+
+    /* gap: 10px; */
+}
+
+[id=assRow1]
+{
+    /*grid properties*/
+    grid-area: assRow1;
+
+    font-weight: bold;
+    font-size: calc(var(--fontSize) + 12px);
+    font-family: var(--fontFamily);
+
+    padding-top: 30px;
+    padding-bottom: 10px;
+
+    border-bottom: var(--border);
+    
+}
+
+[id=assRow2]
+{
+    grid-area: assRow2;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+[id=assRow2] ol
+{
+    padding-left: 30px;
+}
+
+[id=assRow3]
+{
+    display: grid;
+
+    grid-template-columns: 150px 1fr 55px;
+    grid-template-areas: 
+    "assRow3-1 assRow3-2 assRow3-3";
+}
+
+[id=assRow3-1]
+{
+    grid-area: assRow3-1;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+}
+
+[id=assRow3-2]
+{
+    grid-area: assRow3-2;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+}
+
+[id=assRow3-3]
+{
+    grid-area: assRow3-3;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+
+    padding-bottom: var(--bottom);
+    border-bottom: var(--border);
+}
+
+[id=assRow4]
+{
+    grid-auto-rows: auto;
+    grid-auto-columns: 150px 1fr 55px;
+}
+
+.assessmentRow
+{
+    /* grid-area: assRow4; */
+    
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 125px 1fr 75px;
+    grid-template-areas: 
+    "assRow4-1 assRow4-2 assRow4-3";
+
+    margin-bottom: var(--bottom);
+    border-bottom: var(--border);
+}
+
+.assessmentRow-1
+{
+    grid-area: assRow4-1;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-top: 10px;
+    margin-top: 10px;
+
+    border: var(--border);
+    border-radius: var(--radius);
+    outline: none;
+
+    height: 20px;
+}
+
+.assessmentRow-2
+{
+    grid-area: assRow4-2;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: var(--marginR-A-N);
+
+    border: var(--border);
+    border-radius: var(--radius);
+    outline: none;
+}
+
+.assessmentRow-3
+{
+    grid-area: assRow4-3;
+
+    align-self: center;
+    justify-self: center;
+}
+
+/*apparently, what I do here affects icon as well*/
+.assessmentRow4-3_Btn
+{
+    filter: invert(100%);
+    background-color: aqua;
+    border: aqua;
+    border-radius: var(--radius);
+
+    outline: none;
+}
+
+.assessmentRow4-3_Btn:active
+{
+    filter: invert(0%);
+    background-color: var(--btnGreen);
+    border: var(--btnGreen);
+}
+
+.icon_trash
+{
+    padding-top: 5px;
+}
+
+[id=assRow5]
+{
+    /* grid-area: assRow5; */
+
+    /* padding-bottom: 10px; */
+    padding-bottom: 0px;
+}
+
+[id="assRow5"] button
+{
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    border:var(--border);
+    border-radius: var(--radius);
+    border-color: var(--btnGreen);
+    outline: none;
+
+    background-color: var(--btnGreen);
+    color: white;
+
+    height: 30px;
+}
+
+[id="assRow5"] button:active
+{
+    filter: invert(100%);
+    background-color: aqua;
+    border: aqua;
+}
+
+[id=assError]
+{
+    font-weight: bold;
+    font-size: calc(var(--fontSize) - 2px);
+    font-family: var(--fontFamily);
+
+    height: 0px;
+
+    /* color: red; */
+
+    /* opacity: 0%; */
+    /* display:none; */
+}
+
+[id=assRow6]
+{
+    /* grid-area: assRow6; */
+    
+    display: flex;
+    flex-direction: row-reverse;
+
+    padding-bottom: var(--bottom);
+    margin-bottom: var(--bottom);
+    border-bottom: var(--border);
+
+    padding-top: 10px;
+}
+
+[id=assRow6] button
+{
+    flex: 0 1 20%;
+    
+    border-radius: var(--radius);
+    outline: none;
+
+    background-color: var(--btnBlue);
+    border-color: var(--btnBlue);
+    color: white;
+
+    height: 35px;
+    max-width: 150px;
+}
+
+[id=assRow6] button:active
+{
+    background-color: var(--btnGreen);
+    border-color: var(--btnGreen);
+    color: black;
+}
+
+/* narrativeSum compartment ================================================================================================================================= */
+[id=narrativeSum] 
+{
+    max-width: var(--maxWidth);
+
+    grid-area: narrativeSum;
+    
+    display: grid;
+    grid-template-rows: auto auto auto;
+    /* grid-template-columns: 150px 1fr 55px; */
+    /*NOTE: I made a mistake in Assessment Plan section. I should have done must 6 rows and 1 col. 
+            If I need grids within row, make row item another grid container*/
+    grid-template-areas: 
+    "narraRow1"
+    "narraRow2"
+    "narraRow3";
+        
+    /*sets the margin for ALL row items!!*/
+    margin-left: var(--marginR-A-N);
+    margin-right: var(--marginR-A-N);
+}
+
+[id=narraRow1]
+{
+    /*grid properties*/
+    grid-area: narraRow1;
+
+    font-weight: bold;
+    font-size: calc(var(--fontSize) + 12px);
+    font-family: var(--fontFamily);
+
+    padding-top: 30px;
+    padding-bottom: 10px;
+
+    border-bottom: var(--border);
+    
+}
+
+[id=narraRow2]
+{
+    grid-area: narraRow2;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+[id=narraRow3]
+{
+    grid-area: narraRow3;
+
+    /*NOTE: Apparently, I don't even need a separate grid for this!!!*/
+
+    /*No clue why, but doing auto rows creates an extra column (i.e., 1 becomes 2, 2 becomes 3, etc). 
+      Absolutely no idea why*/
+    /* display: grid;
+    grid-auto-rows: auto; */
+
+    /*This works*/
+    /* display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "narraRow3-1"
+    "narraRow3-2"
+    "narraRow3-3"
+    "narraRow3-4"; */
+}
+
+/* [id=narraRow3-1]
+{
+    grid-area: narraRow3-1;    
+}
+
+
+[id=narraRow3-2]
+{
+    grid-area: narraRow3-2;
+}
+
+[id=narraRow3-3]
+{
+    grid-area: narraRow3-3;
+}
+
+[id=narraRow3-4]
+{
+    grid-area: narraRow3-4;
+} */
+
+[id="narraRow3_textArea"], [id="narraRow4_textArea"], [id="narraRow5_textArea"]
+{
+    width: 100%;
+
+    font-size: calc(var(--fontSize) - 3px);
+    font-family: var(--fontFamily);
+
+    margin-top: 2px;
+    margin-bottom: 10px;
+
+    border: var(--border);
+    border-radius: var(--radius);
+    outline: none;
+}
+
+[id=narraRow3-4]
+{
+    grid-area: narraRow3-4;
+    display: flex;
+    flex-direction: row-reverse;
+
+    padding-bottom: var(--bottom);
+    margin-bottom: var(--bottom);
+    border-bottom: var(--border);
+}
+
+[id=narraRow3-4] button
+{
+    flex: 0 1 20%;
+    
+    border-radius: var(--radius);
+    outline: none;
+
+    background-color: var(--btnBlue);
+    border-color: var(--btnBlue);
+    color: white;
+
+    height: 35px;
+    max-width: 150px;
+}
+
+[id=narraRow3-4] button:active
+{
+    background-color: var(--btnGreen);
+    border-color: var(--btnGreen);
+    color: black;
+}
+
+/* footer compartment ================================================================================================================================= 
+   NOTE: I'm probably not going to need this...but just in case....*/
+[id=footer] 
+{
+    grid-area: footer;
+}

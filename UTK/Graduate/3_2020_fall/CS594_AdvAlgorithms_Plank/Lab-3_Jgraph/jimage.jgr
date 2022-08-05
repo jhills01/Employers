@@ -1,0 +1,12 @@
+newgraph                                                                                           
+xaxis min 0 max 100 nodraw                                                                         
+yaxis min 0 max 100 nodraw                                                                         
+                                                                                                   
+newcurve eps gameObjects/ps/space.ps marksize   150   100 pts    40    50                          
+newcurve eps gameObjects/ps/star1.ps marksize  100   100 pts     0   180                           
+newcurve eps gameObjects/ps/star1.ps marksize  100   100 pts     0   780                           
+newcurve eps gameObjects/ps/ship.ps marksize    30    30 pts    48    63                           
+newcurve eps gameObjects/ps/asteroid.ps marksize   100   100 pts    97   220                       
+newcurve eps gameObjects/ps/asteroid.ps marksize   100   100 pts   106   345                       
+newcurve eps gameObjects/ps/asteroid.ps marksize   100   100 pts   -18   470                       
+newcurve eps gameObjects/ps/asteroid.ps marksize   100   100 pts   -44   595                       

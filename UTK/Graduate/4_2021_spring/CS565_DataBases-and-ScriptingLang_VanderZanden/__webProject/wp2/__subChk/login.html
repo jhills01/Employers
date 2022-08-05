@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UTK ABET - Login</title>
+        <link rel="stylesheet" href="login.css" />
+    </head>
+
+    <body>
+            <!--header-------------------------------------------------------------------------------->
+            <div class="gridMember" id="header">
+                Please Sign In
+            </div>
+
+            <!--form to submit information from user to server. See 3.2 Zybook-->
+            <form>
+                <!--email-------------------------------------------------------------------------------->
+                    <input type="text" id="email" placeholder="E-mail"/>
+
+                <!--password-------------------------------------------------------------------------------->
+                    <input type="text" id="password" placeholder="Password" />
+
+                <!--loginBtn-------------------------------------------------------------------------------->
+                <!-- IMPORTANT NOTE: onclick: "return false" is there to stop page from refreshing and messing up animation
+                                need to figure out a way around this... 
+                     WAIT! Actually, as it turns out, type for <button> is defaulted to "submit". 
+                     This is why it was refreshing when I clicked. Once I put type=button, it stopped...
+                     without needs onclick=false hack. I commented it out below-->
+                    <!-- <button id="login" onclick="return false">login</button> -->
+                    <button id="login" type="button" >login</button>
+            </form>
+    </body>
+</html>

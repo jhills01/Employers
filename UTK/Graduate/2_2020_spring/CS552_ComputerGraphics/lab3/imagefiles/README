@@ -1,0 +1,6 @@
+Both RGB and PPM can be viewed with XV, gimp, imagemagic on lab machines.
+
+RGB format: look at sig_*
+PPM format: look at chuck_ppm.txt
+
+

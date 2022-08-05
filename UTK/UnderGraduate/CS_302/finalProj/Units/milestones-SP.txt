@@ -1,0 +1,35 @@
+Repository Link: https://github.com/alambe22/CS302-Final-Project.git
+-everything I have worked on is under ./ShivamChallenge8
+-My compatible task was to make the classes for each unit, definne getter functions, and be able to print their health, damage, and range.
+-I have made a simple makefile so just type "make all" to compile and then ./test to run it. 
+
+
+Weekly Rubric:
+10 points: figure out all the units I will be using and review virtual functions and inheritance classes 
+10 points: figure out how each unit will attacks and move and their decide damage, health, and range
+10 points: decide on the layout of a class and several other inheritance classes along with virtual functions for each unit
+10 points: define the health, damage, and range function for each unit and test that it works.
+
+
+Time log:
+3/25/2019
+-Thought of the movement and attacks each unit will do as well as assign the health,damage, and range.
+2:30pm to 4:30pm 2 hrs
+
+3/27/2019
+-Reviewed over inheritance and virtual functions to make a header file for units
+7:00pm to 7:45pm 0.75hrs
+			     
+-Made a header file that consists of the game units including the base that contains the the virtual functions and variables (health, damage, range). As well as the cpp to define some of those functions.
+8:00 pm to 11pm   3 hrs
+
+3/28/2019
+-Finished defining the getter functions for each unit as well as added a 5th unit(biker) and a base unit.
+8:00 am to 9:30 am 1.5hrs
+
+Total Hours: 7.25 hrs
+
+
+Summary:
+I was able to accomplish everything in the rubric I made for this week, which was basically to think about different types of units and how they will
+attack and move. I tested my getter functions in Units.cpp to make sure the assigned values for health, range, and damage is correct and the print as well. Everything went smoothly, the time that took the longest was deciding how each unit will move and fit with each other on the game board and try to estimate them being balanced when playing. I did run into one error that was "undefined reference to vtable"that took a bit time to figure out since it was my first time using inheritance and virtual functions. Now I will be shifting my next goal to making the attack and move functions for each unit for the upcoming weeks.
