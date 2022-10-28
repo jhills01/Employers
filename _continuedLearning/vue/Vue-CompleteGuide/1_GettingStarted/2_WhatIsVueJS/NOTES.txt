@@ -1,0 +1,3 @@
+VueJS is purely on client-side. Hence the name sounding like "view"…
+
+JavaScript allows dynamic/responsive webpages for the user WITHOUT FETCHING NEW PAGE FROM SERVER!
