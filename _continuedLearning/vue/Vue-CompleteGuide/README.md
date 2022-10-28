@@ -1,9 +1,8 @@
 # Vue - The Complete Guide (incl. Router & Composition API)
 
 ## About this course
-```
+
 Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!
-```1
 
 ## By the numbers
     Skill level: All Levels
