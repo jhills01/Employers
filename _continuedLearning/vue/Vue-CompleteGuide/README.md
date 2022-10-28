@@ -1,16 +1,17 @@
-Name: Vue - The Complete Guide (incl. Router & Composition API)
+## Vue - The Complete Guide (incl. Router & Composition API)
 
-About this course
+# About this course
 Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!
 
-By the numbers
+# By the numbers
     Skill level: All Levels
     Students: 206053
     Languages: English
     Captions: Yes
     Lectures: 329
     Video: 32 total hours
-Certificates
+    
+# Certificates
 
     Get Udemy certificate by completing entire course
 
